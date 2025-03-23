@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import ComponentDisplay, { ComponentInfo } from "@/components/ComponentDisplay";
 import Header from "@/components/Header";
@@ -134,7 +135,7 @@ const Index = () => {
             
             <div className="relative z-10">
               <div className="inline-block bg-primary/10 text-primary rounded-full px-4 py-1 text-sm font-medium mb-6 animate-pulse">
-                <Sparkles className="inline-block mr-1 h-4 w-4" /> Interactive Learning
+                <Sparkles className="inline-block mr-1 h-4 w-4" /> Component Explorer
               </div>
               
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight animate-fade-in text-shadow-md" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.1)" }}>
@@ -142,7 +143,7 @@ const Index = () => {
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-fade-in">
-                Discover web components like you're catching Pokémon! Click to reveal, learn, and collect them all.
+                Discover and learn about web components. Click to highlight, double-click to copy and use in your projects.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
@@ -163,9 +164,9 @@ const Index = () => {
         <section className="py-16 px-6 md:px-12 bg-gradient-to-br from-blue-50 to-red-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Can You Identify Them All?</h2>
+              <h2 className="text-3xl font-bold mb-4">Web Component Library</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Click on any component to reveal its true identity! Double-click to add it to your collection.
+                Browse our collection of common web components. Click to highlight, double-click to copy to clipboard.
               </p>
             </div>
 
@@ -206,9 +207,9 @@ const Index = () => {
         <section className="py-16 px-6 md:px-12 bg-gradient-to-br from-red-50 to-blue-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">How To Play</h2>
+              <h2 className="text-3xl font-bold mb-4">How To Use</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Becoming a Component Master is as easy as 1-2-3:
+                Explore components in three simple steps:
               </p>
             </div>
 
@@ -219,9 +220,9 @@ const Index = () => {
                     1
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Find Components</h3>
+                <h3 className="text-xl font-bold text-center mb-2">Browse Components</h3>
                 <p className="text-muted-foreground text-center">
-                  Explore the wild to discover mysterious components hiding in their natural habitat.
+                  Explore our collection of web components organized by category.
                 </p>
               </Card>
 
@@ -231,9 +232,9 @@ const Index = () => {
                     2
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Reveal Identity</h3>
+                <h3 className="text-xl font-bold text-center mb-2">Learn Details</h3>
                 <p className="text-muted-foreground text-center">
-                  Click to reveal the component and learn its special abilities and characteristics.
+                  Hover over components to see detailed descriptions and usage information.
                 </p>
               </Card>
 
@@ -243,9 +244,9 @@ const Index = () => {
                     3
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Collect Them All</h3>
+                <h3 className="text-xl font-bold text-center mb-2">Use In Projects</h3>
                 <p className="text-muted-foreground text-center">
-                  Double-click to add components to your collection for future use in your web adventures.
+                  Double-click to copy component names for use in your web development projects.
                 </p>
               </Card>
             </div>
