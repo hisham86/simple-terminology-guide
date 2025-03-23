@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Search, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,23 +9,23 @@ const Header = () => {
   return (
     <header className="bg-background backdrop-blur-md py-4 px-6 md:px-12 sticky top-0 z-40 border-b border-border/40 animate-slide-down">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
             T
           </div>
           <h1 className="text-xl font-bold tracking-tight hidden sm:block">
             Terminology Guide
           </h1>
-        </div>
+        </Link>
 
         <div className="hidden md:flex items-center space-x-6">
           <nav className="flex space-x-6">
-            <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
+            <Link to="/" className="text-foreground/80 hover:text-primary transition-colors">
               Home
-            </a>
-            <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
+            </Link>
+            <Link to="/apple-components" className="text-foreground/80 hover:text-primary transition-colors">
               Guide
-            </a>
+            </Link>
             <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
               Examples
             </a>
@@ -54,12 +55,12 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border animate-slide-down">
           <nav className="flex flex-col space-y-4 p-6">
-            <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
+            <Link to="/" className="text-foreground/80 hover:text-primary transition-colors">
               Home
-            </a>
-            <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
+            </Link>
+            <Link to="/apple-components" className="text-foreground/80 hover:text-primary transition-colors">
               Guide
-            </a>
+            </Link>
             <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
               Examples
             </a>
