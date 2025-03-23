@@ -15,26 +15,31 @@ const componentsData: Record<string, ComponentInfo[]> = {
       name: "Header",
       description: "The top section of a website that typically contains the logo, navigation menu, and sometimes a search bar.",
       category: "Layout",
+      imageUrl: "https://placehold.co/600x400/f3f4f6/818cf8?text=Header"
     },
     {
       name: "Footer",
       description: "The bottom section of a website that usually contains links, contact information, and copyright notices.",
       category: "Layout",
+      imageUrl: "https://placehold.co/600x400/f3f4f6/818cf8?text=Footer"
     },
     {
       name: "Sidebar",
       description: "A vertical column on the side of a page that contains additional navigation or information.",
       category: "Layout",
+      imageUrl: "https://placehold.co/600x400/f3f4f6/818cf8?text=Sidebar"
     },
     {
       name: "Container",
       description: "A box that holds other components and helps organize the page layout.",
       category: "Layout",
+      imageUrl: "https://placehold.co/600x400/f3f4f6/818cf8?text=Container"
     },
     {
       name: "Grid",
       description: "A layout system that arranges components in rows and columns.",
       category: "Layout",
+      imageUrl: "https://placehold.co/600x400/f3f4f6/818cf8?text=Grid"
     },
   ],
   navigation: [
@@ -42,26 +47,31 @@ const componentsData: Record<string, ComponentInfo[]> = {
       name: "Navbar",
       description: "A bar that contains links to important pages on the website.",
       category: "Navigation",
+      imageUrl: "https://placehold.co/600x400/fef2f2/ef4444?text=Navbar"
     },
     {
       name: "Menu",
       description: "A list of options that users can select from.",
       category: "Navigation",
+      imageUrl: "https://placehold.co/600x400/fef2f2/ef4444?text=Menu"
     },
     {
       name: "Link",
       description: "Text or image that you can click to go to another page or website.",
       category: "Navigation",
+      imageUrl: "https://placehold.co/600x400/fef2f2/ef4444?text=Link"
     },
     {
       name: "Breadcrumb",
       description: "A trail of links that shows your current location in a website.",
       category: "Navigation",
+      imageUrl: "https://placehold.co/600x400/fef2f2/ef4444?text=Breadcrumb"
     },
     {
       name: "Tab",
       description: "A clickable section that shows different content when selected.",
       category: "Navigation",
+      imageUrl: "https://placehold.co/600x400/fef2f2/ef4444?text=Tab"
     },
   ],
   inputs: [
@@ -69,26 +79,31 @@ const componentsData: Record<string, ComponentInfo[]> = {
       name: "Button",
       description: "A clickable component that performs an action when pressed.",
       category: "Input",
+      imageUrl: "https://placehold.co/600x400/ecfdf5/10b981?text=Button"
     },
     {
       name: "Text Input",
       description: "A box where you can type text, like your name or email.",
       category: "Input",
+      imageUrl: "https://placehold.co/600x400/ecfdf5/10b981?text=Text+Input"
     },
     {
       name: "Checkbox",
       description: "A small box that you can click to select or deselect an option.",
       category: "Input",
+      imageUrl: "https://placehold.co/600x400/ecfdf5/10b981?text=Checkbox"
     },
     {
       name: "Radio Button",
       description: "A circular button that lets you select one option from a group.",
       category: "Input",
+      imageUrl: "https://placehold.co/600x400/ecfdf5/10b981?text=Radio+Button"
     },
     {
       name: "Dropdown",
       description: "A menu that opens when clicked to show more options.",
       category: "Input",
+      imageUrl: "https://placehold.co/600x400/ecfdf5/10b981?text=Dropdown"
     },
   ],
   display: [
@@ -96,26 +111,31 @@ const componentsData: Record<string, ComponentInfo[]> = {
       name: "Card",
       description: "A box that contains related information, like a product or article.",
       category: "Display",
+      imageUrl: "https://placehold.co/600x400/fff7ed/f97316?text=Card"
     },
     {
       name: "Modal",
       description: "A popup window that appears over the current page.",
       category: "Display",
+      imageUrl: "https://placehold.co/600x400/fff7ed/f97316?text=Modal"
     },
     {
       name: "Tooltip",
       description: "A small popup that shows extra information when you hover over something.",
       category: "Display",
+      imageUrl: "https://placehold.co/600x400/fff7ed/f97316?text=Tooltip"
     },
     {
       name: "Accordion",
       description: "A list of items that can be expanded or collapsed to show or hide content.",
       category: "Display",
+      imageUrl: "https://placehold.co/600x400/fff7ed/f97316?text=Accordion"
     },
     {
       name: "Carousel",
       description: "A slideshow that cycles through images or content.",
       category: "Display",
+      imageUrl: "https://placehold.co/600x400/fff7ed/f97316?text=Carousel"
     },
   ],
 };

@@ -10,6 +10,7 @@ export interface ComponentInfo {
   name: string;
   description: string;
   category: string;
+  imageUrl?: string; // Added optional imageUrl field
 }
 
 interface ComponentDisplayProps {
@@ -24,6 +25,7 @@ const ComponentDisplay: React.FC<ComponentDisplayProps> = ({
   children
 }) => {
   const [isHighlighted, setIsHighlighted] = useState(false);
+  const [imageError, setImageError] = useState(false);
   
   const handleClick = () => {
     setIsHighlighted(true);
@@ -38,6 +40,21 @@ const ComponentDisplay: React.FC<ComponentDisplayProps> = ({
     } else {
       toast.error("Failed to copy to clipboard");
     }
+  };
+  
+  const handleImageError = () => {
+    setImageError(true);
+    console.log(`Failed to load image for: ${component.name}`);
+  };
+  
+  // Generate a color based on the component name (for fallback display)
+  const getColorFromName = (name: string) => {
+    const colors = [
+      "bg-blue-100", "bg-green-100", "bg-yellow-100", 
+      "bg-red-100", "bg-purple-100", "bg-pink-100"
+    ];
+    const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return colors[hash % colors.length];
   };
   
   const tooltipContent = (
@@ -55,20 +72,40 @@ const ComponentDisplay: React.FC<ComponentDisplayProps> = ({
     <Tooltip content={tooltipContent} position="top">
       <div
         className={cn(
-          "interactive-component rounded-lg transition-all p-4 cursor-pointer transform hover:scale-105",
-          isHighlighted && "ring-2 ring-primary ring-opacity-70 shadow-lg animate-pulse",
+          "interactive-component rounded-lg transition-all overflow-hidden h-full flex flex-col cursor-pointer",
+          isHighlighted && "ring-2 ring-primary ring-opacity-70 shadow-lg",
           "bg-card",
           className
         )}
         onClick={handleClick}
         onDoubleClick={handleDoubleClick}
       >
-        {children || (
-          <div className="flex flex-col items-center justify-center gap-2 animate-scale-in">
-            <div className="text-3xl font-bold text-foreground">{component.name}</div>
-            <div className="text-sm text-muted-foreground">Click to highlight, double-click to copy</div>
+        <div className={cn(
+          "relative pb-[70%] overflow-hidden", 
+          imageError || !component.imageUrl ? getColorFromName(component.name) : "bg-muted/30"
+        )}>
+          {imageError || !component.imageUrl ? (
+            <div className="absolute inset-0 w-full h-full flex items-center justify-center p-4">
+              <span className="font-medium text-center text-secondary/80">
+                {component.name}
+              </span>
+            </div>
+          ) : (
+            <img 
+              src={component.imageUrl} 
+              alt={component.name}
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              onError={handleImageError}
+            />
+          )}
+        </div>
+        <div className="p-4 flex-grow">
+          <h3 className="font-semibold mb-2">{component.name}</h3>
+          <p className="text-sm text-muted-foreground line-clamp-2">{component.description}</p>
+          <div className="mt-2 text-xs inline-flex items-center bg-muted/50 px-2 py-0.5 rounded">
+            {component.category}
           </div>
-        )}
+        </div>
       </div>
     </Tooltip>
   );
