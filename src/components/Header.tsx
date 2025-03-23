@@ -3,9 +3,11 @@ import { useState } from "react";
 import { Search, Menu, X, Cat, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   return (
     <header className="bg-white py-4 px-6 md:px-12 sticky top-0 z-40 border-b-4 border-anime-red shadow-md animate-slide-down">
@@ -57,16 +59,29 @@ const Header = () => {
         </div>
       </div>
       
-      {isMenuOpen && (
+      {/* Mobile menu with improved animation and no duplicated elements */}
+      {isMenuOpen && isMobile && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b-4 border-anime-red animate-slide-down">
           <nav className="flex flex-col space-y-4 p-6">
-            <Link to="/" className="text-anime-blue hover:text-anime-red transition-colors flex items-center gap-1 font-bold">
+            <Link 
+              to="/" 
+              className="text-anime-blue hover:text-anime-red transition-colors flex items-center gap-1 font-bold"
+              onClick={() => setIsMenuOpen(false)}
+            >
               <Sparkles className="h-4 w-4" /> ホーム
             </Link>
-            <Link to="/apple-components" className="text-anime-blue hover:text-anime-red transition-colors font-bold">
+            <Link 
+              to="/apple-components" 
+              className="text-anime-blue hover:text-anime-red transition-colors font-bold"
+              onClick={() => setIsMenuOpen(false)}
+            >
               アップル
             </Link>
-            <Link to="/material-components" className="text-anime-blue hover:text-anime-red transition-colors font-bold">
+            <Link 
+              to="/material-components" 
+              className="text-anime-blue hover:text-anime-red transition-colors font-bold"
+              onClick={() => setIsMenuOpen(false)}
+            >
               マテリアル
             </Link>
             <div className="relative mt-2">
