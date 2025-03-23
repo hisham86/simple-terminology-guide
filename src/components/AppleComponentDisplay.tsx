@@ -16,6 +16,7 @@ const AppleComponentDisplay: React.FC<AppleComponentDisplayProps> = ({
   className
 }) => {
   const [isHighlighted, setIsHighlighted] = useState(false);
+  const [imageError, setImageError] = useState(false);
   
   const handleClick = () => {
     setIsHighlighted(true);
@@ -31,6 +32,11 @@ const AppleComponentDisplay: React.FC<AppleComponentDisplayProps> = ({
       toast.error("Failed to copy to clipboard");
     }
   };
+
+  const handleImageError = () => {
+    setImageError(true);
+    console.log(`Failed to load image for: ${component.name}`);
+  };
   
   const tooltipContent = (
     <div className="space-y-2">
@@ -42,6 +48,16 @@ const AppleComponentDisplay: React.FC<AppleComponentDisplayProps> = ({
       <p className="text-xs text-muted-foreground mt-2">Double-click to copy</p>
     </div>
   );
+
+  // Generate a color based on the component name (for fallback display)
+  const getColorFromName = (name: string) => {
+    const colors = [
+      "bg-blue-100", "bg-green-100", "bg-yellow-100", 
+      "bg-red-100", "bg-purple-100", "bg-pink-100"
+    ];
+    const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return colors[hash % colors.length];
+  };
   
   return (
     <Tooltip content={tooltipContent} position="top">
@@ -54,12 +70,24 @@ const AppleComponentDisplay: React.FC<AppleComponentDisplayProps> = ({
         onClick={handleClick}
         onDoubleClick={handleDoubleClick}
       >
-        <div className="relative pb-[70%] overflow-hidden bg-muted/30">
-          <img 
-            src={component.imageUrl} 
-            alt={component.name}
-            className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
-          />
+        <div className={cn(
+          "relative pb-[70%] overflow-hidden", 
+          imageError ? getColorFromName(component.name) : "bg-muted/30"
+        )}>
+          {imageError ? (
+            <div className="absolute inset-0 w-full h-full flex items-center justify-center p-4">
+              <span className="font-medium text-center text-secondary/80">
+                {component.name}
+              </span>
+            </div>
+          ) : (
+            <img 
+              src={component.imageUrl} 
+              alt={component.name}
+              className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+              onError={handleImageError}
+            />
+          )}
         </div>
         <div className="p-4 flex-grow bg-card">
           <h3 className="font-semibold mb-2">{component.name}</h3>
