@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import ElementDisplay, { ElementInfo } from "@/components/ElementDisplay";
 import Header from "@/components/Header";
@@ -6,9 +5,9 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ChevronRight, Info, Bookmark, Layout, ArrowRight } from "lucide-react";
+import { ChevronRight, Info, Bookmark, Layout, ArrowRight, Apple } from "lucide-react";
+import { Link } from "react-router-dom";
 
-// Define the web elements data
 const elementsData: Record<string, ElementInfo[]> = {
   layout: [
     {
@@ -144,9 +143,11 @@ const Index = () => {
               <Button size="lg" className="rounded-full px-8">
                 Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8">
-                How It Works
-              </Button>
+              <Link to="/apple-components">
+                <Button size="lg" variant="outline" className="rounded-full px-8">
+                  <Apple className="mr-2 h-4 w-4" /> Apple UI Components
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -255,10 +256,33 @@ const Index = () => {
           </div>
         </section>
 
+        {/* New Apple HIG Section */}
+        <section className="py-16 px-6 md:px-12 bg-muted/30">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center mb-4">
+                <Apple className="h-8 w-8 text-primary" />
+              </div>
+              <h2 className="text-3xl font-bold mb-4">Explore Apple Design Components</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Discover official Apple Human Interface Guidelines components with high-quality visuals and simple explanations.
+              </p>
+            </div>
+            
+            <div className="flex justify-center mt-8">
+              <Link to="/apple-components">
+                <Button size="lg" className="rounded-full px-8">
+                  Browse Apple Components <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-16 px-6 md:px-12 bg-gradient-to-br from-primary/5 to-accent/5">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Master Web Terminology?</h2>
+            <h2 className="text-3xl font-bold mb-6">Ready to Master UI Terminology?</h2>
             <p className="text-lg text-muted-foreground mb-8">
               Start clicking on elements to learn their names and use them confidently in your Lovable prompts.
             </p>
