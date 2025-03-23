@@ -30,9 +30,6 @@ const Header = () => {
             <Link to="/material-components" className="text-anime-blue hover:text-anime-red transition-colors font-bold">
               マテリアル
             </Link>
-            <a href="#" className="text-anime-blue hover:text-anime-red transition-colors font-bold">
-              インフォ
-            </a>
           </nav>
           
           <div className="flex items-center gap-4">
@@ -72,9 +69,6 @@ const Header = () => {
             <Link to="/material-components" className="text-anime-blue hover:text-anime-red transition-colors font-bold">
               マテリアル
             </Link>
-            <a href="#" className="text-anime-blue hover:text-anime-red transition-colors font-bold">
-              インフォ
-            </a>
             <div className="relative mt-2">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-anime-blue h-4 w-4" />
               <input 
