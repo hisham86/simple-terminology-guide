@@ -30,9 +30,6 @@ const Header = () => {
               Material Components
             </Link>
             <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
-              Your Collection
-            </a>
-            <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
               About
             </a>
           </nav>
@@ -67,9 +64,6 @@ const Header = () => {
             <Link to="/material-components" className="text-foreground/80 hover:text-primary transition-colors">
               Material Components
             </Link>
-            <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
-              Your Collection
-            </a>
             <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
               About
             </a>
