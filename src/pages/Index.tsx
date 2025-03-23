@@ -1,5 +1,6 @@
+
 import React, { useState } from "react";
-import ElementDisplay, { ElementInfo } from "@/components/ElementDisplay";
+import ComponentDisplay, { ComponentInfo } from "@/components/ComponentDisplay";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChevronRight, Info, Bookmark, Layout, ArrowRight, Apple } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const elementsData: Record<string, ElementInfo[]> = {
+const componentsData: Record<string, ComponentInfo[]> = {
   layout: [
     {
       name: "Header",
@@ -27,12 +28,12 @@ const elementsData: Record<string, ElementInfo[]> = {
     },
     {
       name: "Container",
-      description: "A box that holds other elements and helps organize the page layout.",
+      description: "A box that holds other components and helps organize the page layout.",
       category: "Layout",
     },
     {
       name: "Grid",
-      description: "A layout system that arranges elements in rows and columns.",
+      description: "A layout system that arranges components in rows and columns.",
       category: "Layout",
     },
   ],
@@ -66,7 +67,7 @@ const elementsData: Record<string, ElementInfo[]> = {
   inputs: [
     {
       name: "Button",
-      description: "A clickable element that performs an action when pressed.",
+      description: "A clickable component that performs an action when pressed.",
       category: "Input",
     },
     {
@@ -134,10 +135,10 @@ const Index = () => {
               Interactive Learning
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight animate-fade-in">
-              Learn Web Terminology <br className="hidden md:block" /> By Clicking Elements
+              Learn Web Terminology <br className="hidden md:block" /> By Clicking Components
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-fade-in">
-              Discover the names and purposes of web elements without technical jargon. Click on elements to learn, double-click to copy terminology for your prompts.
+              Discover the names and purposes of web components without technical jargon. Click on components to learn, double-click to copy terminology for your prompts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
               <Button size="lg" className="rounded-full px-8">
@@ -152,13 +153,13 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Element Showcase */}
+        {/* Component Showcase */}
         <section className="py-16 px-6 md:px-12 bg-muted/30">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Interactive Element Explorer</h2>
+              <h2 className="text-3xl font-bold mb-4">Interactive Component Explorer</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Click on any element to see its name and description. Double-click to copy the terminology to your clipboard.
+                Click on any component to see its name and description. Double-click to copy the terminology to your clipboard.
               </p>
             </div>
 
@@ -177,13 +178,13 @@ const Index = () => {
                 </TabsList>
               </div>
 
-              {Object.keys(elementsData).map((category) => (
+              {Object.keys(componentsData).map((category) => (
                 <TabsContent key={category} value={category} className="mt-0">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {elementsData[category].map((element, index) => (
+                    {componentsData[category].map((component, index) => (
                       <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                        <ElementDisplay
-                          element={element}
+                        <ComponentDisplay
+                          component={component}
                           className="h-full bg-card shadow-sm hover:shadow-md"
                         >
                           <div className="h-full flex flex-col items-center justify-center p-6 text-center">
@@ -193,10 +194,10 @@ const Index = () => {
                               {category === "inputs" && <Info className="h-6 w-6 text-primary" />}
                               {category === "display" && <Bookmark className="h-6 w-6 text-primary" />}
                             </div>
-                            <h3 className="text-xl font-bold mb-2">{element.name}</h3>
-                            <p className="text-muted-foreground text-sm">{element.description}</p>
+                            <h3 className="text-xl font-bold mb-2">{component.name}</h3>
+                            <p className="text-muted-foreground text-sm">{component.description}</p>
                           </div>
-                        </ElementDisplay>
+                        </ComponentDisplay>
                       </div>
                     ))}
                   </div>
@@ -223,9 +224,9 @@ const Index = () => {
                     1
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Click on Elements</h3>
+                <h3 className="text-xl font-bold text-center mb-2">Click on Components</h3>
                 <p className="text-muted-foreground text-center">
-                  Click on any web element to reveal its name and learn what it does in simple terms.
+                  Click on any web component to reveal its name and learn what it does in simple terms.
                 </p>
               </Card>
 
@@ -237,7 +238,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-bold text-center mb-2">Read Simple Explanations</h3>
                 <p className="text-muted-foreground text-center">
-                  See tooltips with easy-to-understand explanations of what each element does.
+                  See tooltips with easy-to-understand explanations of what each component does.
                 </p>
               </Card>
 
@@ -249,7 +250,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-bold text-center mb-2">Double-Click to Copy</h3>
                 <p className="text-muted-foreground text-center">
-                  Double-click to copy the element name to your clipboard for easy use in your prompts.
+                  Double-click to copy the component name to your clipboard for easy use in your prompts.
                 </p>
               </Card>
             </div>
@@ -284,10 +285,10 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Master UI Terminology?</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Start clicking on elements to learn their names and use them confidently in your Lovable prompts.
+              Start clicking on components to learn their names and use them confidently in your Lovable prompts.
             </p>
             <Button size="lg" className="rounded-full px-8">
-              Explore All Elements <ArrowRight className="ml-2 h-4 w-4" />
+              Explore All Components <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </section>
