@@ -62,6 +62,13 @@ export default {
           'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
+        },
+        // New anime-themed colors
+        anime: {
+          red: '#ea384c',
+          blue: '#232e87',
+          lightBlue: '#375FC9',
+          cream: '#F1F1F1',
         }
       },
       borderRadius: {
@@ -71,6 +78,7 @@ export default {
       },
       backgroundImage: {
         'pokeball': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23F2F2F2' stroke='%23D1D1D1' stroke-width='2'/%3E%3Cpath d='M50 85C69.33 85 85 69.33 85 50H15C15 69.33 30.67 85 50 85Z' fill='%23FF5252' stroke='%23D1D1D1' stroke-width='2'/%3E%3Cpath d='M50 15C30.67 15 15 30.67 15 50H85C85 30.67 69.33 15 50 15Z' fill='white' stroke='%23D1D1D1' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='12' fill='white' stroke='%23D1D1D1' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%23D1D1D1'/%3E%3C/svg%3E\")",
+        'anime-pattern': "url('/lovable-uploads/48ed9be5-345e-4c70-ae16-7e08a559e5ae.png')",
       },
       keyframes: {
         'accordion-down': {
@@ -108,6 +116,15 @@ export default {
         'slide-down': {
           '0%': { transform: 'translateY(-20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' }
+        },
+        'wiggle': {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+        'pop': {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' },
+          '100%': { transform: 'scale(1)' },
         }
       },
       animation: {
@@ -119,7 +136,12 @@ export default {
         'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'slide-up': 'slide-up 0.4s ease-out',
-        'slide-down': 'slide-down 0.4s ease-out'
+        'slide-down': 'slide-down 0.4s ease-out',
+        'wiggle': 'wiggle 1s ease-in-out infinite',
+        'pop': 'pop 0.3s ease-in-out',
+      },
+      fontFamily: {
+        'anime': ['Comic Sans MS', 'Arial', 'sans-serif'],
       }
     }
   },

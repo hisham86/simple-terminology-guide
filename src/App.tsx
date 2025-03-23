@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import AppleComponents from "./pages/AppleComponents";
 import MaterialComponents from "./pages/MaterialComponents";
 import NotFound from "./pages/NotFound";
+import AnimeFooter from "./components/AnimeFooter";
 
 const queryClient = new QueryClient();
 

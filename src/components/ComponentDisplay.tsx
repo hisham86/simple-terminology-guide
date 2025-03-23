@@ -4,13 +4,13 @@ import { cn } from "@/lib/utils";
 import Tooltip from "./Tooltip";
 import { copyToClipboard } from "@/utils/copyToClipboard";
 import { toast } from "sonner";
-import { Zap } from "lucide-react";
+import { Cat, Star } from "lucide-react";
 
 export interface ComponentInfo {
   name: string;
   description: string;
   category: string;
-  imageUrl?: string; // Added optional imageUrl field
+  imageUrl?: string;
 }
 
 interface ComponentDisplayProps {
@@ -36,7 +36,10 @@ const ComponentDisplay: React.FC<ComponentDisplayProps> = ({
   const handleDoubleClick = async () => {
     const success = await copyToClipboard(component.name);
     if (success) {
-      toast.success(`"${component.name}" copied to clipboard!`);
+      toast.success(`"${component.name}" copied to clipboard!`, {
+        icon: <Star className="h-4 w-4 text-yellow-400" />,
+        style: { background: '#232e87', color: 'white', border: '2px solid #ea384c' }
+      });
     } else {
       toast.error("Failed to copy to clipboard");
     }
@@ -50,21 +53,21 @@ const ComponentDisplay: React.FC<ComponentDisplayProps> = ({
   // Generate a color based on the component name (for fallback display)
   const getColorFromName = (name: string) => {
     const colors = [
-      "bg-blue-100", "bg-green-100", "bg-yellow-100", 
-      "bg-red-100", "bg-purple-100", "bg-pink-100"
+      "bg-red-100", "bg-blue-100", "bg-yellow-100", 
+      "bg-green-100", "bg-purple-100", "bg-pink-100"
     ];
     const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
     return colors[hash % colors.length];
   };
   
   const tooltipContent = (
-    <div className="space-y-2">
-      <h4 className="font-semibold text-lg">{component.name}</h4>
-      <p className="text-sm opacity-80">{component.description}</p>
-      <div className="text-xs bg-muted/50 inline-block px-2 py-1 rounded">
+    <div className="space-y-2 anime-border p-3 bg-white">
+      <h4 className="font-bold text-lg text-anime-blue">{component.name}</h4>
+      <p className="text-sm">{component.description}</p>
+      <div className="text-xs bg-anime-red text-white inline-block px-2 py-1 rounded">
         {component.category}
       </div>
-      <p className="text-xs text-muted-foreground mt-2">Double-click to copy</p>
+      <p className="text-xs text-anime-blue mt-2 font-bold">ダブルクリックでコピー</p>
     </div>
   );
   
@@ -72,21 +75,20 @@ const ComponentDisplay: React.FC<ComponentDisplayProps> = ({
     <Tooltip content={tooltipContent} position="top">
       <div
         className={cn(
-          "interactive-component rounded-lg transition-all overflow-hidden h-full flex flex-col cursor-pointer",
-          isHighlighted && "ring-2 ring-primary ring-opacity-70 shadow-lg",
-          "bg-card",
+          "anime-card transition-all overflow-hidden h-full flex flex-col cursor-pointer",
+          isHighlighted && "ring-4 ring-anime-red animate-pop",
           className
         )}
         onClick={handleClick}
         onDoubleClick={handleDoubleClick}
       >
         <div className={cn(
-          "relative pb-[70%] overflow-hidden", 
-          imageError || !component.imageUrl ? getColorFromName(component.name) : "bg-muted/30"
+          "relative pb-[70%] overflow-hidden border-b-2 border-anime-blue", 
+          imageError || !component.imageUrl ? getColorFromName(component.name) : "bg-white"
         )}>
           {imageError || !component.imageUrl ? (
             <div className="absolute inset-0 w-full h-full flex items-center justify-center p-4">
-              <span className="font-medium text-center text-secondary/80">
+              <span className="font-bold text-center text-anime-blue">
                 {component.name}
               </span>
             </div>
@@ -98,11 +100,14 @@ const ComponentDisplay: React.FC<ComponentDisplayProps> = ({
               onError={handleImageError}
             />
           )}
+          <div className="absolute top-2 right-2 bg-anime-red text-white text-xs rounded-full h-6 w-6 flex items-center justify-center">
+            <Cat className="h-3 w-3" />
+          </div>
         </div>
-        <div className="p-4 flex-grow">
-          <h3 className="font-semibold mb-2">{component.name}</h3>
-          <p className="text-sm text-muted-foreground line-clamp-2">{component.description}</p>
-          <div className="mt-2 text-xs inline-flex items-center bg-muted/50 px-2 py-0.5 rounded">
+        <div className="p-4 flex-grow bg-white">
+          <h3 className="font-bold text-anime-blue mb-2">{component.name}</h3>
+          <p className="text-sm line-clamp-2">{component.description}</p>
+          <div className="mt-2 text-xs inline-flex items-center bg-anime-red/10 text-anime-red px-2 py-0.5 rounded font-bold">
             {component.category}
           </div>
         </div>

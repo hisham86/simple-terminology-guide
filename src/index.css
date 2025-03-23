@@ -1,10 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    --background: 0 0% 95%;
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -13,10 +14,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 221 83% 53%;
+    --primary: 0 85% 57%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 215 25% 27%;
+    --secondary: 240 70% 33%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 210 40% 96%;
@@ -30,7 +31,7 @@
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --ring: 0 85% 57%;
 
     --radius: 0.75rem;
   }
@@ -45,6 +46,10 @@
   
   body {
     @apply bg-background text-foreground antialiased;
+    background-image: 
+      repeating-linear-gradient(45deg, 
+        rgba(234, 56, 76, 0.03) 0px 10px, 
+        rgba(35, 46, 135, 0.03) 10px 20px);
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
 }
@@ -71,6 +76,48 @@
   .animate-fade-in {
     opacity: 0;
     animation: fade-in 0.5s ease-out forwards;
+  }
+  
+  .anime-border {
+    @apply border-4 border-anime-blue rounded-lg relative overflow-hidden;
+    position: relative;
+  }
+  
+  .anime-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: repeating-linear-gradient(
+      45deg,
+      #ea384c,
+      #ea384c 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    z-index: -1;
+    border-radius: 0.5rem;
+  }
+  
+  .anime-card {
+    @apply bg-white border-2 border-anime-blue rounded-lg shadow-lg transform transition-transform hover:scale-105;
+  }
+  
+  .anime-text {
+    @apply font-bold tracking-wide;
+    text-shadow: 2px 2px 0 #232e87, -1px -1px 0 #232e87, 1px -1px 0 #232e87, -1px 1px 0 #232e87;
+  }
+  
+  .anime-button {
+    @apply bg-anime-red text-white font-bold py-2 px-4 rounded-md transform transition-transform hover:scale-105 active:scale-95;
+    box-shadow: 0 4px 0 #b52e3c;
+  }
+  
+  .anime-button:active {
+    box-shadow: 0 2px 0 #b52e3c;
+    transform: translateY(2px);
   }
 }
 
