@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Search, Menu, X, Cat, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,22 +35,29 @@ const Header = () => {
             </a>
           </nav>
           
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-anime-blue h-4 w-4" />
-            <input 
-              type="text" 
-              placeholder="検索..."
-              className="pl-9 pr-4 py-2 rounded-full text-sm border-2 border-anime-blue bg-white"
-            />
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-anime-blue h-4 w-4" />
+              <input 
+                type="text" 
+                placeholder="検索..."
+                className="pl-9 pr-4 py-2 rounded-full text-sm border-2 border-anime-blue bg-white"
+              />
+            </div>
           </div>
         </div>
 
-        <button 
-          className="md:hidden p-2 text-anime-blue"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
+          <button 
+            className="text-anime-blue"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
       
       {isMenuOpen && (

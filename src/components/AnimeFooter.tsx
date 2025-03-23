@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Cat, Star, Sparkles, Moon } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const AnimeFooter: React.FC = () => {
   return (
@@ -35,16 +36,20 @@ const AnimeFooter: React.FC = () => {
             &copy; 2023 コンポ⼀ネントマスター | All rights reserved
           </p>
           
-          <div className="flex items-center gap-4">
-            <a href="#" className="text-white/70 hover:text-anime-red transition-colors">
-              <Star className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-white/70 hover:text-anime-red transition-colors">
-              <Moon className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-white/70 hover:text-anime-red transition-colors">
-              <Sparkles className="h-5 w-5" />
-            </a>
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <ThemeToggle variant="footer" />
+            
+            <div className="flex items-center gap-4 mt-4 md:mt-0">
+              <a href="#" className="text-white/70 hover:text-anime-red transition-colors">
+                <Star className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-white/70 hover:text-anime-red transition-colors">
+                <Moon className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-white/70 hover:text-anime-red transition-colors">
+                <Sparkles className="h-5 w-5" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
