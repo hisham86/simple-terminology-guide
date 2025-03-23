@@ -24,7 +24,10 @@ const Header = () => {
               Home
             </Link>
             <Link to="/apple-components" className="text-foreground/80 hover:text-primary transition-colors">
-              Guide
+              Apple UI
+            </Link>
+            <Link to="/material-components" className="text-foreground/80 hover:text-primary transition-colors">
+              Material UI
             </Link>
             <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
               Examples
@@ -59,7 +62,10 @@ const Header = () => {
               Home
             </Link>
             <Link to="/apple-components" className="text-foreground/80 hover:text-primary transition-colors">
-              Guide
+              Apple UI
+            </Link>
+            <Link to="/material-components" className="text-foreground/80 hover:text-primary transition-colors">
+              Material UI
             </Link>
             <a href="#" className="text-foreground/80 hover:text-primary transition-colors">
               Examples
