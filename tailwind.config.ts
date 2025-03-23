@@ -69,6 +69,9 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
       },
+      backgroundImage: {
+        'pokeball': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23F2F2F2' stroke='%23D1D1D1' stroke-width='2'/%3E%3Cpath d='M50 85C69.33 85 85 69.33 85 50H15C15 69.33 30.67 85 50 85Z' fill='%23FF5252' stroke='%23D1D1D1' stroke-width='2'/%3E%3Cpath d='M50 15C30.67 15 15 30.67 15 50H85C85 30.67 69.33 15 50 15Z' fill='white' stroke='%23D1D1D1' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='12' fill='white' stroke='%23D1D1D1' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%23D1D1D1'/%3E%3C/svg%3E\")",
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import Tooltip from "./Tooltip";
 import { copyToClipboard } from "@/utils/copyToClipboard";
 import { toast } from "sonner";
+import { Zap } from "lucide-react";
 
 export interface ComponentInfo {
   name: string;
@@ -23,8 +24,15 @@ const ComponentDisplay: React.FC<ComponentDisplayProps> = ({
   children
 }) => {
   const [isHighlighted, setIsHighlighted] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(false);
   
   const handleClick = () => {
+    if (!isRevealed) {
+      setIsRevealed(true);
+      toast.success(`It's ${component.name}!`, {
+        icon: <Zap className="h-4 w-4" />
+      });
+    }
     setIsHighlighted(true);
     // Reset highlight after animation duration
     setTimeout(() => setIsHighlighted(false), 1000);
@@ -54,17 +62,26 @@ const ComponentDisplay: React.FC<ComponentDisplayProps> = ({
     <Tooltip content={tooltipContent} position="top">
       <div
         className={cn(
-          "interactive-component rounded-lg transition-all p-4",
-          isHighlighted && "ring-2 ring-primary ring-opacity-70 shadow-lg",
+          "interactive-component rounded-lg transition-all p-4 cursor-pointer transform hover:scale-105",
+          isHighlighted && "ring-2 ring-primary ring-opacity-70 shadow-lg animate-pulse",
+          !isRevealed && "bg-pokeball bg-contain bg-no-repeat bg-center",
+          isRevealed ? "bg-card" : "bg-card/5",
           className
         )}
         onClick={handleClick}
         onDoubleClick={handleDoubleClick}
       >
-        {children || (
-          <div className="flex flex-col items-center justify-center gap-2">
-            <div className="text-3xl font-bold text-foreground">{component.name}</div>
-            <div className="text-sm text-muted-foreground">Click to highlight, double-click to copy</div>
+        {isRevealed ? (
+          children || (
+            <div className="flex flex-col items-center justify-center gap-2 animate-scale-in">
+              <div className="text-3xl font-bold text-foreground">{component.name}</div>
+              <div className="text-sm text-muted-foreground">Click to highlight, double-click to copy</div>
+            </div>
+          )
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full py-8">
+            <div className="text-xl font-bold mb-2 text-primary">???</div>
+            <div className="text-sm">Click to reveal!</div>
           </div>
         )}
       </div>

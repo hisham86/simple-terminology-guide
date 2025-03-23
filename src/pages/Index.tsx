@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import ComponentDisplay, { ComponentInfo } from "@/components/ComponentDisplay";
 import Header from "@/components/Header";
@@ -6,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ChevronRight, Info, Bookmark, Layout, ArrowRight, Apple } from "lucide-react";
+import { ChevronRight, Search, Zap, Sparkles, ArrowRight, Apple } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const componentsData: Record<string, ComponentInfo[]> = {
@@ -124,42 +123,49 @@ const Index = () => {
   const [activeCategory, setActiveCategory] = useState("layout");
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 to-red-50">
       <Header />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-16 md:py-24 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto text-center">
-            <div className="inline-block bg-primary/10 text-primary rounded-full px-4 py-1 text-sm font-medium mb-6 animate-fade-in">
-              Interactive Learning
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight animate-fade-in">
-              Learn Web Terminology <br className="hidden md:block" /> By Clicking Components
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-fade-in">
-              Discover the names and purposes of web components without technical jargon. Click on components to learn, double-click to copy terminology for your prompts.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-              <Button size="lg" className="rounded-full px-8">
-                Get Started <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Link to="/apple-components">
-                <Button size="lg" variant="outline" className="rounded-full px-8">
-                  <Apple className="mr-2 h-4 w-4" /> Apple UI Components
+        <section className="py-16 md:py-24 px-6 md:px-12 bg-gradient-to-r from-blue-500/10 to-red-500/10">
+          <div className="max-w-7xl mx-auto text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('/lovable-uploads/63614492-2b2f-4352-8cf4-d60fa888cf1a.png')] bg-contain bg-center bg-no-repeat opacity-10"></div>
+            
+            <div className="relative z-10">
+              <div className="inline-block bg-primary/10 text-primary rounded-full px-4 py-1 text-sm font-medium mb-6 animate-pulse">
+                <Sparkles className="inline-block mr-1 h-4 w-4" /> Interactive Learning
+              </div>
+              
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight animate-fade-in text-shadow-md" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.1)" }}>
+                What's That Component?
+              </h1>
+              
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-fade-in">
+                Discover web components like you're catching Pokémon! Click to reveal, learn, and collect them all.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+                <Button size="lg" className="rounded-full px-8 bg-yellow-500 hover:bg-yellow-600 text-black font-bold">
+                  Get Started <Zap className="ml-2 h-4 w-4" />
                 </Button>
-              </Link>
+                <Link to="/apple-components">
+                  <Button size="lg" variant="outline" className="rounded-full px-8 border-blue-500 text-blue-600 hover:bg-blue-100">
+                    <Apple className="mr-2 h-4 w-4" /> Apple Components
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Component Showcase */}
-        <section className="py-16 px-6 md:px-12 bg-muted/30">
+        <section className="py-16 px-6 md:px-12 bg-gradient-to-br from-blue-50 to-red-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Interactive Component Explorer</h2>
+              <h2 className="text-3xl font-bold mb-4">Can You Identify Them All?</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Click on any component to see its name and description. Double-click to copy the terminology to your clipboard.
+                Click on any component to reveal its true identity! Double-click to add it to your collection.
               </p>
             </div>
 
@@ -170,11 +176,11 @@ const Index = () => {
               className="w-full"
             >
               <div className="flex justify-center mb-8">
-                <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                  <TabsTrigger value="layout" className="px-6">Layout</TabsTrigger>
-                  <TabsTrigger value="navigation" className="px-6">Navigation</TabsTrigger>
-                  <TabsTrigger value="inputs" className="px-6">Inputs</TabsTrigger>
-                  <TabsTrigger value="display" className="px-6">Display</TabsTrigger>
+                <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2 bg-card/50">
+                  <TabsTrigger value="layout" className="px-6 data-[state=active]:bg-blue-500 data-[state=active]:text-white">Layout</TabsTrigger>
+                  <TabsTrigger value="navigation" className="px-6 data-[state=active]:bg-red-500 data-[state=active]:text-white">Navigation</TabsTrigger>
+                  <TabsTrigger value="inputs" className="px-6 data-[state=active]:bg-yellow-500 data-[state=active]:text-black">Inputs</TabsTrigger>
+                  <TabsTrigger value="display" className="px-6 data-[state=active]:bg-green-500 data-[state=active]:text-white">Display</TabsTrigger>
                 </TabsList>
               </div>
 
@@ -185,19 +191,8 @@ const Index = () => {
                       <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                         <ComponentDisplay
                           component={component}
-                          className="h-full bg-card shadow-sm hover:shadow-md"
-                        >
-                          <div className="h-full flex flex-col items-center justify-center p-6 text-center">
-                            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                              {category === "layout" && <Layout className="h-6 w-6 text-primary" />}
-                              {category === "navigation" && <ChevronRight className="h-6 w-6 text-primary" />}
-                              {category === "inputs" && <Info className="h-6 w-6 text-primary" />}
-                              {category === "display" && <Bookmark className="h-6 w-6 text-primary" />}
-                            </div>
-                            <h3 className="text-xl font-bold mb-2">{component.name}</h3>
-                            <p className="text-muted-foreground text-sm">{component.description}</p>
-                          </div>
-                        </ComponentDisplay>
+                          className="h-full shadow-sm hover:shadow-md"
+                        />
                       </div>
                     ))}
                   </div>
@@ -208,49 +203,49 @@ const Index = () => {
         </section>
 
         {/* How It Works */}
-        <section className="py-16 px-6 md:px-12">
+        <section className="py-16 px-6 md:px-12 bg-gradient-to-br from-red-50 to-blue-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">How It Works</h2>
+              <h2 className="text-3xl font-bold mb-4">How To Play</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Learning web terminology has never been easier. Just three simple steps:
+                Becoming a Component Master is as easy as 1-2-3:
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              <Card className="p-6 glass-card border border-border/50 hover:border-primary/30 transition-colors">
+              <Card className="p-6 glass-card border border-border/50 hover:border-blue-300 transition-colors bg-white/80 hover:bg-white">
                 <div className="flex justify-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+                  <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg">
                     1
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Click on Components</h3>
+                <h3 className="text-xl font-bold text-center mb-2">Find Components</h3>
                 <p className="text-muted-foreground text-center">
-                  Click on any web component to reveal its name and learn what it does in simple terms.
+                  Explore the wild to discover mysterious components hiding in their natural habitat.
                 </p>
               </Card>
 
-              <Card className="p-6 glass-card border border-border/50 hover:border-primary/30 transition-colors">
+              <Card className="p-6 glass-card border border-border/50 hover:border-red-300 transition-colors bg-white/80 hover:bg-white">
                 <div className="flex justify-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+                  <div className="w-12 h-12 rounded-full bg-red-500 text-white flex items-center justify-center font-bold text-lg">
                     2
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Read Simple Explanations</h3>
+                <h3 className="text-xl font-bold text-center mb-2">Reveal Identity</h3>
                 <p className="text-muted-foreground text-center">
-                  See tooltips with easy-to-understand explanations of what each component does.
+                  Click to reveal the component and learn its special abilities and characteristics.
                 </p>
               </Card>
 
-              <Card className="p-6 glass-card border border-border/50 hover:border-primary/30 transition-colors">
+              <Card className="p-6 glass-card border border-border/50 hover:border-yellow-300 transition-colors bg-white/80 hover:bg-white">
                 <div className="flex justify-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+                  <div className="w-12 h-12 rounded-full bg-yellow-500 text-black flex items-center justify-center font-bold text-lg">
                     3
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2">Double-Click to Copy</h3>
+                <h3 className="text-xl font-bold text-center mb-2">Collect Them All</h3>
                 <p className="text-muted-foreground text-center">
-                  Double-click to copy the component name to your clipboard for easy use in your prompts.
+                  Double-click to add components to your collection for future use in your web adventures.
                 </p>
               </Card>
             </div>
@@ -258,22 +253,22 @@ const Index = () => {
         </section>
 
         {/* New Apple HIG Section */}
-        <section className="py-16 px-6 md:px-12 bg-muted/30">
+        <section className="py-16 px-6 md:px-12 bg-gradient-to-br from-blue-50 to-red-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center justify-center mb-4">
-                <Apple className="h-8 w-8 text-primary" />
+              <div className="inline-flex items-center justify-center mb-4 p-2 bg-gray-100 rounded-full">
+                <Apple className="h-8 w-8 text-gray-700" />
               </div>
-              <h2 className="text-3xl font-bold mb-4">Explore Apple Design Components</h2>
+              <h2 className="text-3xl font-bold mb-4">Rare Apple Components</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Discover official Apple Human Interface Guidelines components with high-quality visuals and simple explanations.
+                Discover the elusive Apple species with their unique design patterns and elegant behaviors.
               </p>
             </div>
             
             <div className="flex justify-center mt-8">
               <Link to="/apple-components">
-                <Button size="lg" className="rounded-full px-8">
-                  Browse Apple Components <ArrowRight className="ml-2 h-4 w-4" />
+                <Button size="lg" className="rounded-full px-8 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700">
+                  Find Apple Components <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>
@@ -281,14 +276,14 @@ const Index = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-6 md:px-12 bg-gradient-to-br from-primary/5 to-accent/5">
+        <section className="py-16 px-6 md:px-12 bg-gradient-to-br from-yellow-400/10 to-red-500/10">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Master UI Terminology?</h2>
+            <h2 className="text-3xl font-bold mb-6">Ready To Be A Component Master?</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Start clicking on components to learn their names and use them confidently in your Lovable prompts.
+              Start your journey to discover, learn, and master all the web components in our world!
             </p>
-            <Button size="lg" className="rounded-full px-8">
-              Explore All Components <ArrowRight className="ml-2 h-4 w-4" />
+            <Button size="lg" className="rounded-full px-8 bg-gradient-to-r from-red-500 to-yellow-500 hover:from-red-600 hover:to-yellow-600 text-white">
+              Begin Your Adventure <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </section>
