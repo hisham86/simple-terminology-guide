@@ -4,10 +4,11 @@ import AppleComponentDisplay from "@/components/AppleComponentDisplay";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, ChevronRight, Image, Layout, Layers, Search, Zap } from "lucide-react";
 import { appleComponents } from "@/data/appleComponents";
 import { Link } from "react-router-dom";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const AppleComponents = () => {
   const [activeCategory, setActiveCategory] = useState("navigation-and-search");
@@ -25,6 +26,15 @@ const AppleComponents = () => {
     "selection-and-input": "Selection & Input",
     "status": "Status",
     "layout-and-organization": "Layout & Organization"
+  };
+
+  // Function to scroll to category section
+  const scrollToCategory = (category: string) => {
+    const element = document.getElementById(`apple-${category}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActiveCategory(category);
+    }
   };
 
   return (
@@ -58,29 +68,38 @@ const AppleComponents = () => {
               </div>
             </div>
 
-            <Tabs 
-              defaultValue="navigation-and-search" 
-              value={activeCategory}
-              onValueChange={setActiveCategory}
-              className="w-full"
-            >
-              <div className="flex justify-center mb-10 overflow-x-auto pb-2">
-                <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-2">
-                  {Object.keys(appleComponents).map((category) => (
-                    <TabsTrigger 
-                      key={category} 
-                      value={category} 
-                      className="gap-2 px-3 py-2"
-                    >
-                      <span className="hidden md:inline">{categoryIcons[category]}</span>
-                      <span className="truncate">{categoryLabels[category]}</span>
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-              </div>
+            <div className="sticky top-0 z-10 pt-2 pb-4 bg-background">
+              <TabsList className="w-full justify-between">
+                {Object.keys(appleComponents).map((category) => (
+                  <TabsTrigger 
+                    key={category} 
+                    value={category} 
+                    className="gap-2 px-3 py-2"
+                    onClick={() => scrollToCategory(category)}
+                    data-state={activeCategory === category ? "active" : "inactive"}
+                  >
+                    <span className="hidden md:inline">{categoryIcons[category]}</span>
+                    <span className="truncate">{categoryLabels[category]}</span>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
 
+            <div className="space-y-24 mt-8">
               {Object.keys(appleComponents).map((category) => (
-                <TabsContent key={category} value={category} className="mt-0">
+                <div 
+                  key={category} 
+                  id={`apple-${category}`} 
+                  className="scroll-mt-32"
+                >
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-2">
+                      {categoryIcons[category]}
+                      <h2 className="text-2xl font-bold">{categoryLabels[category]}</h2>
+                    </div>
+                    <div className="h-1 w-20 bg-primary rounded-full"></div>
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {appleComponents[category].map((component, index) => (
                       <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
@@ -91,9 +110,9 @@ const AppleComponents = () => {
                       </div>
                     ))}
                   </div>
-                </TabsContent>
+                </div>
               ))}
-            </Tabs>
+            </div>
           </div>
         </section>
 

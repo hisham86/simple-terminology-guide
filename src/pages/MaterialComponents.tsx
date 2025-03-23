@@ -4,10 +4,11 @@ import MaterialComponentDisplay from "@/components/MaterialComponentDisplay";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Box, CheckSquare, ExternalLink, Layout, Menu, MousePointer, Navigation, Search, Type } from "lucide-react";
 import { materialComponents } from "@/data/materialComponents";
 import { Link } from "react-router-dom";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const MaterialComponents = () => {
   const [activeCategory, setActiveCategory] = useState("actions");
@@ -27,6 +28,15 @@ const MaterialComponents = () => {
     "navigation": "Navigation",
     "selection": "Selection",
     "text-inputs": "Text Inputs"
+  };
+  
+  // Function to scroll to category section
+  const scrollToCategory = (category: string) => {
+    const element = document.getElementById(`material-${category}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActiveCategory(category);
+    }
   };
 
   return (
@@ -60,29 +70,38 @@ const MaterialComponents = () => {
               </div>
             </div>
 
-            <Tabs 
-              defaultValue="actions" 
-              value={activeCategory}
-              onValueChange={setActiveCategory}
-              className="w-full"
-            >
-              <div className="flex justify-center mb-10 overflow-x-auto pb-2">
-                <TabsList className="grid grid-cols-2 md:grid-cols-6 gap-2">
-                  {Object.keys(materialComponents).map((category) => (
-                    <TabsTrigger 
-                      key={category} 
-                      value={category} 
-                      className="gap-2 px-3 py-2"
-                    >
-                      <span className="hidden md:inline">{categoryIcons[category]}</span>
-                      <span className="truncate">{categoryLabels[category]}</span>
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-              </div>
+            <div className="sticky top-0 z-10 pt-2 pb-4 bg-background">
+              <TabsList className="w-full justify-between">
+                {Object.keys(materialComponents).map((category) => (
+                  <TabsTrigger 
+                    key={category} 
+                    value={category} 
+                    className="gap-2 px-3 py-2"
+                    onClick={() => scrollToCategory(category)}
+                    data-state={activeCategory === category ? "active" : "inactive"}
+                  >
+                    <span className="hidden md:inline">{categoryIcons[category]}</span>
+                    <span className="truncate">{categoryLabels[category]}</span>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
 
+            <div className="space-y-24 mt-8">
               {Object.keys(materialComponents).map((category) => (
-                <TabsContent key={category} value={category} className="mt-0">
+                <div 
+                  key={category} 
+                  id={`material-${category}`}
+                  className="scroll-mt-32"
+                >
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-2">
+                      {categoryIcons[category]}
+                      <h2 className="text-2xl font-bold">{categoryLabels[category]}</h2>
+                    </div>
+                    <div className="h-1 w-20 bg-primary rounded-full"></div>
+                  </div>
+                  
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {materialComponents[category].map((component, index) => (
                       <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
@@ -93,9 +112,9 @@ const MaterialComponents = () => {
                       </div>
                     ))}
                   </div>
-                </TabsContent>
+                </div>
               ))}
-            </Tabs>
+            </div>
           </div>
         </section>
 
