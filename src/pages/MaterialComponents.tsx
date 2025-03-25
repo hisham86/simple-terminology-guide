@@ -4,7 +4,7 @@ import MaterialComponentDisplay from "@/components/MaterialComponentDisplay";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ArrowLeft, Box, CheckSquare, ExternalLink, Layout, Menu, MousePointer, Navigation, Search, Type } from "lucide-react";
 import { materialComponents } from "@/data/materialComponents";
 import { Link } from "react-router-dom";
@@ -71,20 +71,28 @@ const MaterialComponents = () => {
             </div>
 
             <div className="sticky top-0 z-10 pt-2 pb-4 bg-background">
-              <TabsList className="w-full justify-between">
+              <Tabs defaultValue={activeCategory} value={activeCategory} onValueChange={setActiveCategory}>
+                <TabsList className="w-full justify-between">
+                  {Object.keys(materialComponents).map((category) => (
+                    <TabsTrigger 
+                      key={category} 
+                      value={category} 
+                      className="gap-2 px-3 py-2"
+                      onClick={() => scrollToCategory(category)}
+                    >
+                      <span className="hidden md:inline">{categoryIcons[category]}</span>
+                      <span className="truncate">{categoryLabels[category]}</span>
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                
+                {/* Add empty TabsContent to satisfy the component requirements */}
                 {Object.keys(materialComponents).map((category) => (
-                  <TabsTrigger 
-                    key={category} 
-                    value={category} 
-                    className="gap-2 px-3 py-2"
-                    onClick={() => scrollToCategory(category)}
-                    data-state={activeCategory === category ? "active" : "inactive"}
-                  >
-                    <span className="hidden md:inline">{categoryIcons[category]}</span>
-                    <span className="truncate">{categoryLabels[category]}</span>
-                  </TabsTrigger>
+                  <TabsContent key={category} value={category} className="hidden">
+                    {/* Content is shown elsewhere based on scroll position */}
+                  </TabsContent>
                 ))}
-              </TabsList>
+              </Tabs>
             </div>
 
             <div className="space-y-24 mt-8">
