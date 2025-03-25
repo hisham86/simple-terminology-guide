@@ -1,7 +1,7 @@
 
 # Component Explorer: Web UI Elements Learning Platform
 
-![Main Page](https://placehold.co/1600x900/f3f4f6/818cf8?text=Component+Explorer+Homepage)
+![Landing Page](public/lovable-uploads/db9a7c3d-96c5-4c31-940e-463acb1acb40.png)
 
 ## About This Project
 
